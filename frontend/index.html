@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RuleGuard — Contradiction-Aware University Rulebook Assistant</title>
+  <link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="mark">RG</span>
+      <div>
+        <h1>RuleGuard</h1>
+        <p>Contradiction-Aware University Rulebook Assistant</p>
+      </div>
+    </div>
+    <p class="corpus-label">Nexus University · Academic Year 2026–2027 · answers only from the rulebook</p>
+  </header>
+
+  <main>
+    <section class="ask-card">
+      <label for="question">Question</label>
+      <textarea id="question" rows="3" placeholder="Example: What attendance is required to sit semester examinations?"></textarea>
+      <div class="actions">
+        <button id="ask-btn" type="button">Ask</button>
+        <span id="loading" class="loading hidden">Searching the rulebook…</span>
+      </div>
+      <div class="chips" id="chips"></div>
+    </section>
+
+    <section id="error" class="error hidden"></section>
+
+    <section id="result" class="hidden">
+      <div class="status-row">
+        <span id="badge" class="badge"></span>
+      </div>
+      <article id="answer" class="answer"></article>
+      <section id="conflict-panel" class="conflict-panel hidden">
+        <h2>Conflict comparison</h2>
+        <div id="conflict-list"></div>
+      </section>
+      <section class="sources-panel">
+        <h2>Sources</h2>
+        <p class="hint">Citations are shown immediately. Similarity is cosine similarity against the local index.</p>
+        <div id="sources"></div>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    RuleGuard does not invent rules. If the corpus is silent or contradictory, it says so.
+  </footer>
+  <script src="/assets/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "answerable": [
+    "What attendance percentage is required to appear for semester examinations under the attendance policy?",
+    "How many print volumes may an undergraduate student borrow from the Central Library?",
+    "When does course registration close?",
+    "What is the maximum duration of a four-year undergraduate programme?",
+    "Which payment methods are permitted for University fees?",
+    "What cumulative grade point average is required to keep a continuing undergraduate Merit Scholarship?",
+    "How soon must a lost identity card be reported?",
+    "May visitors stay overnight in student hostel rooms?",
+    "What is the last arrival time for an examination after the start?",
+    "How is internal assessment typically weighted against the end-semester examination?"
+  ],
+  "conflict": [
+    "What attendance is required to appear for the semester examination?",
+    "When is the Odd Semester undergraduate tuition deadline for 2026-2027?",
+    "What is the weekday hostel curfew or return time for resident students?"
+  ]
+}

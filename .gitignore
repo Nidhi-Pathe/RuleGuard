@@ -1,0 +1,57 @@
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Generated index (rebuild with scripts/build_index.py)
+data/*.npy
+data/*.json
+data/*.pkl
+data/*.pickle
+!data/.gitkeep
+
+# Generated PDF can be rebuilt; keep generator script
+# corpus/medical_exemption.pdf is generated — ignore if you prefer rebuild-only:
+# corpus/medical_exemption.pdf
+
+# Secrets and local config
+.env
+.env.*
+!.env.example
+*.pem
+secrets.json
+credentials.json
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and caches
+*.log
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.cache/
+huggingface/
+.huggingface/
+
+# Model caches (local)
+*.bin
+*.onnx
