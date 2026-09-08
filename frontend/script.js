@@ -51,7 +51,8 @@ async function submit() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ question }),
     });
-    const contentType = response.headers.get("content-type") || "";`r`n    const data = contentType.includes("application/json") ? await response.json() : { detail: await response.text() };
+    const contentType = response.headers.get("content-type") || "";
+    const data = contentType.includes("application/json") ? await response.json() : { detail: await response.text() };
     if (!response.ok) {
       throw new Error(data.detail || "Request failed.");
     }
@@ -125,4 +126,6 @@ function escapeHtml(value) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
 }
+
+
 
