@@ -26,7 +26,7 @@ The application combines document processing, semantic search, rule retrieval, c
 * ⚠️ **Conflict Detection**
 
   * Detects potentially conflicting or inconsistent rules.
-  * Displays the relevant sections and explanations.
+  * Displays relevant sections and explanations.
 
 * 📚 **Source References**
 
@@ -149,7 +149,7 @@ git clone https://github.com/Nidhi-Pathe/RuleGuard.git
 cd RuleGuard
 ```
 
-Create a virtual environment:
+Create a virtual environment.
 
 ### Windows
 
@@ -176,6 +176,8 @@ python scripts/build_index.py
 
 This processes the available policy documents and creates the data required for semantic retrieval.
 
+If a pre-generated vector index is already included in the repository, this step may not be required before running the application.
+
 ---
 
 ## Running the Application
@@ -201,13 +203,13 @@ uvicorn backend.main:app --host 127.0.0.1 --port 8001
 Then open the application in your browser:
 
 ```text
-http://127.0.0.1:8001
+http://127.0.0.1:8000
 ```
 
-or, if using port 8000:
+or, when using port `8001`:
 
 ```text
-http://127.0.0.1:8000
+http://127.0.0.1:8001
 ```
 
 ---
@@ -216,7 +218,7 @@ http://127.0.0.1:8000
 
 ### Health Check
 
-```http
+```text
 GET /health
 ```
 
@@ -224,7 +226,7 @@ Used to check whether the backend is running correctly.
 
 ### Ask a Question
 
-```http
+```text
 POST /ask
 ```
 
@@ -275,6 +277,48 @@ The interface displays:
 
 ---
 
+## Mocked Components and Limitations
+
+RuleGuard is designed as a project demonstration and should not be treated as a production-grade policy authority.
+
+The system's output depends on the policy documents and vector index available to it.
+
+### Current limitations
+
+* The system only answers based on the policy documents available in the project.
+* Semantic retrieval depends on the quality of the generated embeddings and stored vector index.
+* Conflict detection identifies **potential** conflicts and may require human verification.
+* Generated answers should be verified against the cited policy sections before being used for official decisions.
+* The project does not currently provide authentication or role-based access control.
+* Policy documents are not automatically synchronized with an external institutional policy system.
+* The deployed free-tier service may experience a startup delay after a period of inactivity.
+
+### Mocked / Demonstration Behaviour
+
+Some parts of the application may use simplified or deterministic project logic rather than a production external AI or policy-management service.
+
+Where such logic is used, it is intended to demonstrate the complete RuleGuard workflow:
+
+```text
+Document
+   ↓
+Chunking
+   ↓
+Embeddings
+   ↓
+Retrieval
+   ↓
+Conflict Detection
+   ↓
+Answer Generation
+   ↓
+Sources + Result
+```
+
+The project therefore demonstrates the architecture and workflow of a policy analysis system while keeping external infrastructure requirements minimal.
+
+---
+
 ## Error Handling
 
 The frontend handles both JSON and non-JSON backend responses.
@@ -286,6 +330,8 @@ Unexpected end of JSON input
 ```
 
 when the backend returns an empty or non-JSON error response.
+
+Backend errors are displayed to the user instead of causing the frontend JSON parser to fail silently.
 
 ---
 
@@ -301,7 +347,14 @@ Example start command:
 uvicorn backend.main:app --host 0.0.0.0 --port $PORT
 ```
 
-The application should also ensure that all required data files, including the vector index, are available in the deployed environment.
+The deployed environment must have:
+
+* All required Python dependencies
+* The required policy documents
+* The required vector index/data files
+* Correct environment configuration, if applicable
+
+The application should also expose the FastAPI service on the port provided by the hosting platform.
 
 ---
 
@@ -367,6 +420,17 @@ Potential future improvements include:
 * Improved answer evaluation
 * Persistent vector database
 * Better handling of very large policy collections
+* Automated policy document updates
+
+---
+
+## Version Control
+
+Development of RuleGuard is tracked using Git and GitHub.
+
+The repository contains incremental commits documenting major development stages, including backend implementation, vector index integration, frontend improvements, and error handling.
+
+This provides a traceable development history rather than relying on a single final commit.
 
 ---
 
@@ -374,8 +438,7 @@ Potential future improvements include:
 
 **Nidhi Pathe**
 
-GitHub:
-https://github.com/Nidhi-Pathe/RuleGuard
+GitHub: https://github.com/Nidhi-Pathe/RuleGuard
 
 ---
 
